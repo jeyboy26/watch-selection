@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch Comparison — Tissot &amp; Citizen (CA)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181e; --ink-soft:#5a636e; --line:#e3e6ea;
+    --paper:#f3f4f5; --card:#ffffff; --shot:#f7f7f5;
+    --accent:#24507e; --accent-ink:#1b3a5c;
+    --mech-bg:#e9eff5; --mech-tx:#1f4a78;
+    --eco-bg:#e7f0ea;  --eco-tx:#2f6b47;
+    --qz-bg:#edeff1;   --qz-tx:#54606b;
+    --sale:#8a4b1f; --sale-bg:#f6ece1;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:clamp(20px,4vw,56px) clamp(16px,4vw,40px) 72px}
+
+  /* Masthead */
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 14px}
+  h1{font-family:"Saira Semi Condensed",sans-serif;font-weight:700;font-size:clamp(2.3rem,6.5vw,4.3rem);line-height:.96;letter-spacing:-.01em;margin:0 0 16px}
+  .thesis{max-width:60ch;font-size:1.02rem;color:var(--ink-soft);margin:0 0 26px}
+  .rule{height:1px;background:var(--ink);opacity:.85;margin:0 0 14px}
+  .index{display:flex;flex-wrap:wrap;gap:8px 26px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
+  .index b{color:var(--ink);font-weight:600}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:30px 0 8px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:8px}
+  .legend .lg{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--ink-soft)}
+  .swatch{width:26px;height:16px;border-radius:4px;border:1px solid rgba(0,0,0,.08)}
+  .legend .sep{flex:1 1 12px}
+  .legend .note{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-soft)}
+  .dotdemo{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#1e3a63,#86a38c);border:1px solid rgba(0,0,0,.15);display:inline-block;vertical-align:middle;margin-right:5px}
+
+  /* Brand section */
+  .brandhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:52px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+  .brandhead h2{font-family:"Saira Semi Condensed",sans-serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);margin:0;letter-spacing:-.01em}
+  .brandhead .bmeta{font-family:"IBM Plex Mono",monospace;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* Grid + cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(322px,1fr));gap:20px}
+  .card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+  .card:hover{transform:translateY(-4px);border-color:#c9d2db;box-shadow:0 14px 34px -18px rgba(20,40,70,.4)}
+
+  .shot{position:relative;height:238px;background:var(--shot);display:grid;place-items:center;border-bottom:1px solid var(--line);overflow:hidden}
+  .shot img{max-width:84%;max-height:86%;object-fit:contain;transition:transform .3s ease}
+  .card:hover .shot img{transform:scale(1.045)}
+  .shot .ph{display:none;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink-soft);padding:0 18px;text-align:center}
+  .shot.noimg .ph{display:block}
+  .shot .refchip{position:absolute;left:10px;top:10px;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.06em;color:var(--ink-soft);background:rgba(255,255,255,.82);border:1px solid var(--line);padding:3px 7px;border-radius:5px}
+
+  .body{display:flex;flex-direction:column;gap:11px;padding:16px 17px 17px;flex:1}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0}
+  .eyebrow .brand{color:var(--accent-ink);font-weight:600}
+  .name{font-family:"Saira Semi Condensed",sans-serif;font-weight:600;font-size:1.32rem;line-height:1.04;margin:-2px 0 0}
+
+  .priceRow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .price{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:1.12rem;color:var(--ink)}
+  .msrp{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--ink-soft);text-decoration:line-through}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap}
+  .t-mech{background:var(--mech-bg);color:var(--mech-tx)}
+  .t-eco{background:var(--eco-bg);color:var(--eco-tx)}
+  .t-qz{background:var(--qz-bg);color:var(--qz-tx)}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--sale-bg);color:var(--sale);font-weight:500}
+
+  .specs{margin:2px 0 0;padding:11px 0 2px;border-top:1px solid var(--line);display:grid;gap:7px}
+  .specs .row{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:baseline}
+  .specs dt{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .specs dd{margin:0;font-size:.86rem;color:var(--ink)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.18);margin-right:6px;vertical-align:middle}
+
+  .notes{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+  .notes p{margin:0;font-size:.87rem;color:#2c333c}
+  .notes .lbl{display:block;font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:2px}
+
+  .link{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--accent-ink);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+  .link:hover{text-decoration:underline}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-soft)}
+  footer p{margin:0 0 8px;max-width:80ch}
+  footer .fmono{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.04em}
+
+  @media (max-width:560px){
+    .shot{height:210px}
+    .specs .row{grid-template-columns:72px 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+    .card:hover{transform:none}
+    .card:hover .shot img{transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">Spec dossier · citizenwatch.com/ca · tissotwatches.com/en-ca · July 2026</p>
+    <h1>Thirteen watches,<br>side by side.</h1>
+    <p class="thesis">Every reference you sent, pulled straight from the Canadian sites: price in CAD, the numbers that actually separate them, the maker's own product shot, and a plain read on when each one earns wrist time and what it's trying to be.</p>
+    <div class="rule"></div>
+    <div class="index">
+      <span><b>2</b> brands</span>
+      <span><b>13</b> references</span>
+      <span><b>C$550–C$1,195</b></span>
+      <span><b>Ø 38–45 mm</b></span>
+      <span><b>5</b> movement types</span>
+    </div>
+  </header>
+
+  <section class="legend" aria-label="Legend">
+    <span class="lg"><span class="swatch" style="background:var(--mech-bg)"></span> Automatic (self-winding)</span>
+    <span class="lg"><span class="swatch" style="background:var(--eco-bg)"></span> Light-powered — Eco-Drive / Solar</span>
+    <span class="lg"><span class="swatch" style="background:var(--qz-bg)"></span> Quartz (battery)</span>
+    <span class="sep"></span>
+    <span class="note"><span class="dotdemo"></span>dot = dial colour</span>
+  </section>
+
+  <main id="app"></main>
+
+  <footer>
+    <p><b>On price.</b> Tissot figures are Canadian list price. Citizen figures are what the CA site shows now: <b>AT8260-51M</b> and <b>BM7660-54E</b> carry a live 20%-off promo (MSRP struck through); the <b>Tsuki-Yomi</b> is back at full MSRP after the Father's-Day sale ended. <b>NY0136-52L (Fugu)</b> is currently sold out on the CA site. Promos rotate — confirm on the page before buying.</p>
+    <p><b>On specs.</b> Pulled from each product page in July 2026. Water resistance for the Le Locle Open Heart isn't listed on the CA page; 30 m is the standard figure for that model and it should be treated as a dress watch either way. Citizen's "Sport Luxury" name covers two unrelated watches here (the AT8260 atomic chrono and the BM7660 integrated three-hander) — they share a name, nothing else.</p>
+    <p class="fmono">Images link to and are served from the manufacturers' own CDNs. Not affiliated with Tissot or Citizen.</p>
+  </footer>
+</div>
+
+<script>
+const watches = [
+  // ---------------- TISSOT ----------------
+  { brand:"Tissot", coll:"Le Locle", name:"Le Locle Open Heart 39.3", ref:"T006.407.16.033.01",
+    url:"https://www.tissotwatches.com/en-ca/T0064071603301.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dwa0a6920c/product-pictures/51faed92-5795-4292-a338-165b2de1aff4_T006_407_16_033_01.png?sm=fit&sw=680&sh=680",
+    dot:"#8f959d", dial:"Grey, open heart", size:"39.3 mm", mat:"Steel · sapphire",
+    move:"Powermatic 80 automatic · 80 h", water:"~30 m", power:"mech", tag:"Automatic",
+    price:"C$1,125",
+    style:"Traditional Swiss dress watch. The open-heart aperture bares the balance wheel — a classical, slightly romantic flourish rather than a tool feature.",
+    wears:"Office, weddings, dressier evenings; disappears under a cuff. Keep it away from water." },
+
+  { brand:"Tissot", coll:"Gentleman", name:"Gentleman 38", ref:"T165.807.11.031.00",
+    url:"https://www.tissotwatches.com/en-ca/T1658071103100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dwceb77928/product-pictures/556cca2b-4951-4452-8663-d47057ffa2b5_T165-807-11-031-00.png?sm=fit&sw=680&sh=680",
+    dot:"#d5d7da", dial:"Silver", size:"38 mm", mat:"Steel · sapphire+AR",
+    move:"Powermatic 80 automatic · 80 h", water:"100 m", power:"mech", tag:"Automatic",
+    price:"C$1,050",
+    style:"The archetypal do-everything watch — clean, restrained silver dial, exhibition caseback, Nivachron hairspring. Classic-contemporary done straight.",
+    wears:"Genuinely anywhere: boardroom to weekend. If you want one watch to cover ~90% of occasions, this is the pick of the group." },
+
+  { brand:"Tissot", coll:"T-Race", name:"T-Race 45", ref:"T141.417.11.041.00",
+    url:"https://www.tissotwatches.com/en-ca/T1414171104100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dw149476aa/product-pictures/db84f663-7705-486e-8afb-b4c86db13023_T141_417_11_041_00.png?sm=fit&sw=680&sh=680",
+    dot:"#1c3f6e", dial:"Blue", size:"45 mm", mat:"Steel · sapphire+AR",
+    move:"Quartz chronograph · date", water:"100 m", power:"quartz", tag:"Quartz chrono",
+    price:"C$795",
+    style:"Overtly motorsport: brake-disc bezel, handlebar-style pushers, cooling-fin case. Big, loud, unapologetically casual.",
+    wears:"Weekends, active and casual wear, track days. At 45 mm and ~200 g it's a statement — too much under a dress shirt." },
+
+  { brand:"Tissot", coll:"PRC 100 Solar", name:"PRC 100 Solar 39", ref:"T151.422.11.031.00",
+    url:"https://www.tissotwatches.com/en-ca/T1514221103100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dw1f2853bb/product-pictures/83597119-5024-4a61-84c6-a9b97a3ea77a_T151-422-11-031-00.png?sm=fit&sw=680&sh=680",
+    dot:"#cbd0d5", dial:"Silver", size:"39 mm", mat:"Steel · sapphire",
+    move:"Solar quartz (Lightmaster) · date", water:"100 m", power:"solar", tag:"Solar",
+    price:"C$675",
+    style:"Sporty-casual daily with a faceted 12-sided bezel. Solar-powered, so you never touch a battery. Slim at 9.2 mm.",
+    wears:"Everyday, desk-to-dinner casual, travel. A low-maintenance workhorse; the silver dial keeps it neutral." },
+
+  { brand:"Tissot", coll:"PR 100", name:"PR 100 40 Chronograph", ref:"T150.417.11.351.00",
+    url:"https://www.tissotwatches.com/en-ca/T1504171135100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dwad5f32f1/product-pictures/eed641a5-df41-4654-a3a5-f76b4eebc607_T150_417_11_351_00.png?sm=fit&sw=680&sh=680",
+    dot:"#aec3d6", dial:"Ice blue", size:"40 mm", mat:"Steel · sapphire",
+    move:"Quartz chronograph · date", water:"100 m", power:"quartz", tag:"Quartz chrono",
+    price:"C$550",
+    style:"Classic-sport chronograph — slim, legible, three sub-dials. The ice-blue dial keeps a traditional layout feeling current.",
+    wears:"Daily and smart-casual; sits under a cuff far better than the T-Races. The value pick of the whole list." },
+
+  { brand:"Tissot", coll:"PRC 100 Solar", name:"PRC 100 Solar 39", ref:"T151.422.11.351.00",
+    url:"https://www.tissotwatches.com/en-ca/T1514221135100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dwecef89d7/product-pictures/fa501af9-2eaf-4769-b2c6-7bc940a4e281_T151-422-11-351-00.png?sm=fit&sw=680&sh=680",
+    dot:"#aec3d6", dial:"Ice blue", size:"39 mm", mat:"Steel · sapphire",
+    move:"Solar quartz (Lightmaster) · date", water:"100 m", power:"solar", tag:"Solar",
+    price:"C$675",
+    style:"Same solar 12-sided sports watch as its silver sibling, in a cooler ice-blue dial — a touch more casual and youthful.",
+    wears:"Same everyday-casual brief; choose this over the silver when you want something a little less formal." },
+
+  { brand:"Tissot", coll:"T-Race", name:"T-Race 41 Automatic", ref:"T141.807.11.041.00",
+    url:"https://www.tissotwatches.com/en-ca/T1418071104100.html",
+    img:"https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dw35c8a14a/product-pictures/c94fac10-1d1f-45b9-9811-acbf854fe777_T141_807_11_041_00.png?sm=fit&sw=680&sh=680",
+    dot:"#1c3f6e", dial:"Blue", size:"41 mm", mat:"Steel · sapphire+AR",
+    move:"Powermatic 80 automatic · 80 h", water:"100 m", power:"mech", tag:"Automatic",
+    price:"C$1,045",
+    style:"Motorsport DNA, but mechanical and more wearable at 41 mm — exhibition caseback, brake-disc bezel. The grown-up T-Race.",
+    wears:"Casual to smart-casual; the pick if you want the T-Race look in something you wind rather than a quartz statement piece." },
+
+  // ---------------- CITIZEN ----------------
+  { brand:"Citizen", coll:"Tsuki-Yomi A-T", name:"Tsuki-Yomi A-T", ref:"BY1010-57H",
+    url:"https://www.citizenwatch.com/ca/en/product/BY1010-57H.html",
+    img:"https://citizenwatch.widen.net/content/fhfb84fcha/webp/Tsuki-Yomi+A-T.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#8b9199", dial:"Grey", size:"43 mm", mat:"Super Titanium · sapphire",
+    move:"Eco-Drive H874 · radio-sync · moonphase, perpetual cal.", water:"100 m", power:"ecoAtomic", tag:"Eco-Drive · Atomic",
+    price:"C$1,195",
+    style:"Citizen's tech flagship here: the world's first atomic-timekeeping moonphase, a 30th-anniversary piece in light Super Titanium. A dressy-sport statement.",
+    wears:"The versatile show-piece — office to evening, and the moonphase adds occasion. Radio-sync plus solar means set-and-forget accuracy." },
+
+  { brand:"Citizen", coll:"Sport Luxury A-T", name:"Sport Luxury Chrono A-T", ref:"AT8260-51M",
+    url:"https://www.citizenwatch.com/ca/en/product/AT8260-51M.html",
+    img:"https://citizenwatch.widen.net/content/uteuteoose/webp/Sport+Luxury.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#a9c3da", dial:"Light blue", size:"43 mm", mat:"Steel · sapphire",
+    move:"Eco-Drive H800 · radio-sync · chrono, perpetual cal.", water:"100 m", power:"ecoAtomic", tag:"Eco-Drive · Atomic",
+    price:"C$740", msrp:"C$925", badge:"20% off",
+    style:"Sport-luxury chronograph with atomic timekeeping and a soft sky-blue dial; mixed brushed/polished steel. A lot of complication for the money.",
+    wears:"Business-casual to smart daily wear. Solar + radio-set means it's always on time with zero fuss." },
+
+  { brand:"Citizen", coll:"Promaster Dive", name:"Promaster Dive Automatic (Fugu)", ref:"NY0136-52L",
+    url:"https://www.citizenwatch.com/ca/en/product/NY0136-52L.html",
+    img:"https://citizenwatch.widen.net/content/r4fk4rerhz/webp/Promaster+Dive+Automatic.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#1e3a63", dial:"Blue", size:"44 mm", mat:"Steel · sapphire",
+    move:"8204 automatic · day-date", water:"200 m · ISO dive", power:"mech", tag:"Automatic",
+    price:"C$795", badge:"Sold out",
+    style:"A proper ISO-rated 200 m dive/tool watch, automatic, with the cult Fugu pufferfish caseback engraving. Rugged and casual.",
+    wears:"Water, travel, weekends, anything active — the only true swimmer in this list. Currently sold out on the CA site." },
+
+  { brand:"Citizen", coll:"Zenshin", name:"Zenshin 60 Mechanical", ref:"NK5020-58M",
+    url:"https://www.citizenwatch.com/ca/en/product/NK5020-58M.html",
+    img:"https://citizenwatch.widen.net/content/v4oztkjmj4/webp/Zenshin+60+Mechanical.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#2c4b78", dial:"Gradient blue", size:"40.5 mm", mat:"Super Titanium · sapphire",
+    move:"8322 automatic · 60 h · small seconds", water:"100 m", power:"mech", tag:"Automatic",
+    price:"C$995",
+    style:"Modern integrated-bracelet sport-luxe (the Genta-style genre) in Super Titanium — feather-light, gradient-blue dial, exhibition caseback.",
+    wears:"Smart-casual to dressy-casual; the one nice mechanical that's barely there on the wrist. The upgrade pick of the two Zenshins." },
+
+  { brand:"Citizen", coll:"Zenshin", name:"Zenshin Mechanical", ref:"NJ0180-80M",
+    url:"https://www.citizenwatch.com/ca/en/product/NJ0180-80M.html",
+    img:"https://citizenwatch.widen.net/content/23m88hvbdq/webp/Zenshin+Mechanical.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#86a38c", dial:"Textured green/blue", size:"40.5 mm", mat:"Super Titanium · sapphire",
+    move:"8213 automatic · date · hacking", water:"100 m", power:"mech", tag:"Automatic",
+    price:"C$895",
+    style:"Same integrated Super-Titanium sport-luxe line, textured dial with small-seconds. Uses the older 8213 movement (shorter reserve than the 60).",
+    wears:"Smart-casual daily. Effectively the NK5020's cheaper sibling — same look, lighter on movement spec; the C$100 gap buys the 60 h calibre." },
+
+  { brand:"Citizen", coll:"Sport Luxury", name:"Sport Luxury Integrated", ref:"BM7660-54E",
+    url:"https://www.citizenwatch.com/ca/en/product/BM7660-54E.html",
+    img:"https://citizenwatch.widen.net/content/eqsecbcxln/webp/Sport+Luxury.webp?u=41zuoe&width=680&height=680&quality=80&crop=false&keep=c&color=F9F8F6",
+    dot:"#1b1d22", dial:"Textured black", size:"40 mm", mat:"Steel · sapphire",
+    move:"Eco-Drive E111 · 3-hand date", water:"100 m", power:"eco", tag:"Eco-Drive",
+    price:"C$556", msrp:"C$695", badge:"20% off",
+    style:"1970s-inspired integrated H-link sports-dress watch, textured black dial, light-powered. Understated and easy.",
+    wears:"Everyday do-anything — suit to t-shirt. The cheapest here and arguably the most versatile Citizen for daily rotation." },
+];
+
+function chipClass(p){ return p==="mech" ? "t-mech" : p==="quartz" ? "t-qz" : "t-eco"; }
+
+function card(w){
+  return `
+  <article class="card">
+    <div class="shot">
+      <span class="refchip">${w.ref}</span>
+      <span class="ph">${w.brand} ${w.name}<br>${w.ref}</span>
+      <img src="${w.img}" alt="${w.brand} ${w.name}" loading="lazy"
+           onerror="this.closest('.shot').classList.add('noimg');this.remove();">
+    </div>
+    <div class="body">
+      <p class="eyebrow"><span class="brand">${w.brand}</span> · ${w.coll}</p>
+      <h3 class="name">${w.name}</h3>
+      <div class="priceRow">
+        <span class="price">${w.price}</span>
+        ${w.msrp ? `<span class="msrp">${w.msrp}</span>` : ``}
+        <span class="tag ${chipClass(w.power)}">${w.tag}</span>
+        ${w.badge ? `<span class="badge">${w.badge}</span>` : ``}
+      </div>
+      <dl class="specs">
+        <div class="row"><dt>Case</dt><dd>${w.size} · ${w.mat}</dd></div>
+        <div class="row"><dt>Movement</dt><dd>${w.move}</dd></div>
+        <div class="row"><dt>Water</dt><dd>${w.water}</dd></div>
+        <div class="row"><dt>Dial</dt><dd><span class="dot" style="background:${w.dot}"></span>${w.dial}</dd></div>
+      </dl>
+      <div class="notes">
+        <p><span class="lbl">Wears best</span>${w.wears}</p>
+        <p><span class="lbl">Style</span>${w.style}</p>
+      </div>
+      <a class="link" href="${w.url}" target="_blank" rel="noopener">View on ${w.brand} ↗</a>
+    </div>
+  </article>`;
+}
+
+function section(brand, sub){
+  const items = watches.filter(w=>w.brand===brand);
+  return `
+  <section>
+    <div class="brandhead">
+      <h2>${brand}</h2>
+      <span class="bmeta">${sub} · ${items.length} references</span>
+    </div>
+    <div class="grid">${items.map(card).join("")}</div>
+  </section>`;
+}
+
+document.getElementById("app").innerHTML =
+  section("Tissot","Swiss") + section("Citizen","Japan");
+</script>
+</body>
+</html>
