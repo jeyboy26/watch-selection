@@ -34,6 +34,16 @@
   .index{display:flex;flex-wrap:wrap;gap:8px 26px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
   .index b{color:var(--ink);font-weight:600}
 
+  /* The read */
+  .read{margin:36px 0 4px}
+  .read-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 14px}
+  .read-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 32px}
+  .read-col{border-top:2px solid var(--ink);padding-top:12px}
+  .read-col h3{font-family:"Saira Semi Condensed",sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:-.005em;line-height:1.05;margin:0 0 7px}
+  .read-col p{margin:0;font-size:.9rem;line-height:1.5;color:#2c333c}
+  .read-col b{color:var(--ink);font-weight:600}
+  @media (max-width:760px){.read-grid{grid-template-columns:1fr;gap:20px}}
+
   /* Legend */
   .legend{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:30px 0 8px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:8px}
   .legend .lg{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--ink-soft)}
@@ -106,9 +116,7 @@
   <header>
     <p class="kicker">Spec dossier · citizenwatch.com/ca · tissotwatches.com/en-ca · July 2026</p>
     <h1>Thirteen watches,<br>side by side.</h1>
-    <p class="thesis">Every reference you sent, pulled straight from the Canadian sites: price in CAD, the numbers that actually separate them, the maker's own product shot, and a plain read on when each one earns wrist time and what it's trying to be. The Sport Luxury name is doing double duty for Citizen — the AT8260 (atomic chrono, C$740) and the BM7660 (integrated 3-hander, C$556) share nothing but the label. And the two Zenshins (NK5020 C$995, NJ0180 C$895) are the same watch visually; the extra C$100 buys the 60-hour 8322 movement over the older 8213. Same story on the two PRC 100 Solars (C$675) — identical watch, silver vs ice-blue dial.
-Straight read if you're actually choosing: the PR 100 chrono at C$550 is the value outlier, the Gentleman is the one-watch-does-everything pick, and the Fugu is the only real swimmer — but it's sold out on the CA site right now. The Tsuki-Yomi is the only genuine step-up in the group (titanium, atomic moonphase); everything else clusters in the C$550–1,050 sport/casual band.
-Prices are as-shown on the sites today: the two Citizen "20% off" tags and the Fugu's sold-out status will drift, so re-check before pulling the trigger. </p>
+    <p class="thesis">Every reference you sent, pulled straight from the Canadian sites: price in CAD, the numbers that actually separate them, the maker's own product shot, and a plain read on when each one earns wrist time and what it's trying to be.</p>
     <div class="rule"></div>
     <div class="index">
       <span><b>2</b> brands</span>
@@ -118,6 +126,24 @@ Prices are as-shown on the sites today: the two Citizen "20% off" tags and the F
       <span><b>5</b> movement types</span>
     </div>
   </header>
+
+  <section class="read" aria-label="The read">
+    <p class="read-eyebrow">The read</p>
+    <div class="read-grid">
+      <div class="read-col">
+        <h3>Overlap to know</h3>
+        <p>Citizen's <b>Sport Luxury</b> label covers two unrelated watches — the AT8260 atomic chrono (C$740) and the BM7660 integrated three-hander (C$556). The two <b>Zenshins</b> look identical; the C$100 step from the NJ0180 (C$895) to the NK5020 (C$995) just buys the 60-hour 8322 movement over the older 8213. The two <b>PRC 100 Solars</b> (C$675) differ only in dial colour.</p>
+      </div>
+      <div class="read-col">
+        <h3>If you're choosing</h3>
+        <p>The <b>PR 100 chrono</b> (C$550) is the value outlier. The <b>Gentleman</b> is the one-watch-does-everything pick. The <b>Fugu</b> is the only true swimmer — currently sold out on the CA site. The <b>Tsuki-Yomi</b> is the only genuine step-up, in titanium with an atomic moonphase; everything else sits in the C$550–1,050 sport/casual band.</p>
+      </div>
+      <div class="read-col">
+        <h3>On pricing</h3>
+        <p>Figures are as shown on the sites today. Tissot are list price; the two Citizen <b>20% off</b> tags and the Fugu's <b>sold-out</b> status will drift, so re-check on the page before buying.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="legend" aria-label="Legend">
     <span class="lg"><span class="swatch" style="background:var(--mech-bg)"></span> Automatic (self-winding)</span>
